@@ -30,13 +30,4 @@ function TableBody(props) {
 function Table(props) {
   return (
     <table>
-      <TableHeader />
-      <TableBody
-        characterData={props.characterData}
-        removeCharacter={props.removeCharacter}
-      />
-    </table>
-  );
-}
-
-export default Table;
+      <TableHeader
