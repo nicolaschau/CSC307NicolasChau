@@ -105,14 +105,16 @@ app.delete("/users/:id", (req, res) => {
     res.status(404).send("Resource not found.");
   } else {
     users["users_list"].splice(index, 1);
-    res.send();
+    res.status(200).send("User deleted successfully.");
   }
 });
 
 app.post("/users", (req, res) => {
   const userToAdd = req.body;
+  const randomId = Math.random().toString(36).substring(2, 8);
+  userToAdd["id"] = randomId;
   addUser(userToAdd);
-  res.status(201).json(userToAdd);
+  res.status(201).send(userToAdd);
 });
 
 app.listen(port, () => {
