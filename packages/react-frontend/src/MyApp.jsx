@@ -52,13 +52,18 @@ function MyApp() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(person),
-    }).then((response) => {
-      if (response.status === 201) {
-        return response.json();
-      } else {
-        throw new Error("Failed to add user");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.status === 201) {
+          return response.json();
+        } else {
+          throw new Error("Failed to add user");
+        }
+      })
+      .then((data) => {
+        person.id = data.id; // Update the person object with the ID returned from the server
+        return person;
+      });
 
     return promise;
   }
