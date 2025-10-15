@@ -20,7 +20,7 @@ function MyApp() {
       method: "DELETE",
     })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.status === 204) {
           const updated = characters.filter((character) => character.id !== id);
           setCharacters(updated);
         } else {
