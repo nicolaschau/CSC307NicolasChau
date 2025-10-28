@@ -30,6 +30,34 @@ test("Testing div -- both negative numbers", () => {
   expect(got).toBe(expected);
 });
 
+test("Testing div -- decimal numbers", () => {
+  const expected = 2.5;
+  const got = mut.div(5, 2);
+  expect(got).toBe(expected);
+});
+
+test("Testing div -- zero numerator", () => {
+  const expected = 0;
+  const got = mut.div(0, 5);
+  expect(got).toBe(expected);
+});
+
+test("Testing div -- large numbers", () => {
+  const expected = 1000000;
+  const got = mut.div(1000000000, 1000);
+  expect(got).toBe(expected);
+});
+
+test("Testing div -- not a number input", () => {
+  const got = mut.div("20", 5);
+  expect(got).toBe(4);
+});
+
+test("Testing div -- both inputs not numbers", () => {
+  const got = mut.div("abc", "def");
+  expect(got).toBeNaN();
+});
+
 test("Testing containsNumbers -- success", () => {
   const text = "Hello123";
   const got = mut.containsNumbers(text);
